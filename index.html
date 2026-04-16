@@ -7,587 +7,191 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:        #F5F4F0;
-    --surface:   #FFFFFF;
-    --surface2:  #EFEFEB;
-    --border:    #E0DED8;
-    --border2:   #CCCAC3;
-    --text:      #1A1916;
-    --text2:     #6B6960;
-    --text3:     #9B9A94;
-    --purple-bg: #EEEDFE; --purple:    #3C3489;
-    --green-bg:  #E1F5EE; --green:     #085041;
-    --amber-bg:  #FAEEDA; --amber:     #633806;
-    --blue-bg:   #E6F1FB; --blue:      #0C447C;
-    --coral-bg:  #FAECE7; --coral:     #4A1B0C;
-    --info-bg:   #EAF1FB; --info:      #185FA5;
-    --note-bg:   #E8F5EE; --note:      #0F6E56;
-    --radius:    10px;
-    --shadow:    0 1px 3px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+    --bg:#F5F4F0;--surface:#FFFFFF;--surface2:#EFEFEB;--border:#E0DED8;--border2:#CCCAC3;
+    --text:#1A1916;--text2:#6B6960;--text3:#9B9A94;
+    --purple-bg:#EEEDFE;--purple:#3C3489;--green-bg:#E1F5EE;--green:#085041;
+    --amber-bg:#FAEEDA;--amber:#633806;--blue-bg:#E6F1FB;--blue:#0C447C;
+    --coral-bg:#FAECE7;--coral:#4A1B0C;--info-bg:#EAF1FB;--info:#185FA5;
+    --note-bg:#E8F5EE;--note:#0F6E56;--radius:10px;
+    --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.05);
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
-
-  /* ── HEADER ── */
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  .logo-mark {
-    width: 36px; height: 36px;
-    background: var(--purple);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .logo-mark span {
-    color: white; font-weight: 600; font-size: 15px; letter-spacing: -.5px;
-  }
-  .header-text h1 { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.2; }
-  .header-text p  { font-size: 12px; color: var(--text3); margin-top: 1px; }
-  .header-badge {
-    margin-left: auto;
-    background: var(--purple-bg);
-    color: var(--purple);
-    font-size: 11px; font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid #d0cefc;
-    white-space: nowrap;
-  }
-
-  /* ── MAIN LAYOUT ── */
-  .page { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
-
-  /* ── PROGRESS BAR ── */
-  .progress-wrap { margin-bottom: 32px; }
-  .progress-steps {
-    display: flex; gap: 6px; align-items: center;
-    flex-wrap: wrap;
-  }
-  .progress-step {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 11px; color: var(--text3); font-weight: 500;
-    transition: color .2s;
-  }
-  .progress-step.active { color: var(--text2); }
-  .progress-step.done   { color: var(--purple); }
-  .step-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--border2);
-    transition: background .2s;
-    flex-shrink: 0;
-  }
-  .progress-step.active .step-dot { background: var(--text2); }
-  .progress-step.done   .step-dot { background: var(--purple); }
-  .step-arrow { color: var(--border2); font-size: 10px; }
-
-  /* ── STEP BLOCKS ── */
-  .step-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 24px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    animation: fadeUp .25s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .step-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 14px;
-  }
-  .step-num {
-    width: 22px; height: 22px;
-    background: var(--surface2);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 600; color: var(--text2);
-    flex-shrink: 0;
-    font-family: 'DM Mono', monospace;
-  }
-  .step-title { font-size: 12px; font-weight: 500; color: var(--text2); letter-spacing: .03em; text-transform: uppercase; }
-  .step-selected-badge {
-    margin-left: auto;
-    font-size: 12px; font-weight: 500;
-    color: var(--purple);
-    background: var(--purple-bg);
-    padding: 3px 10px; border-radius: 20px;
-    border: 1px solid #d0cefc;
-  }
-
-  /* ── CHIPS ── */
-  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip {
-    border: 1.5px solid var(--border2);
-    background: var(--surface);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 400;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all .15s;
-    line-height: 1.3;
-    text-align: left;
-  }
-  .chip:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); transform: translateY(-1px); }
-  .chip.sel   { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); font-weight: 500; }
-
-  .chip.c-nivel { }
-  .chip.c-nivel.sel { border-color: var(--green); color: var(--green); background: var(--green-bg); }
-  .chip.c-nivel:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
-
-  .chip.c-ubic.sel   { border-color: var(--amber); color: var(--amber); background: var(--amber-bg); }
-  .chip.c-ubic:hover { border-color: var(--amber); color: var(--amber); background: var(--amber-bg); }
-
-  .chip.c-eje.sel   { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
-  .chip.c-eje:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
-
-  .chip.c-esp.sel   { border-color: var(--coral); color: var(--coral); background: var(--coral-bg); }
-  .chip.c-esp:hover { border-color: var(--coral); color: var(--coral); background: var(--coral-bg); }
-
-  .chip small { display: block; font-size: 11px; font-weight: 400; margin-top: 2px; opacity: .7; }
-
-  /* ── DETAIL CARD ── */
-  .detail-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    animation: fadeUp .25s ease both;
-  }
-  .detail-header {
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .detail-crumb {
-    display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
-    margin-bottom: 10px;
-  }
-  .detail-crumb span { font-size: 11px; color: var(--text3); }
-  .detail-crumb .crumb-item { color: var(--text2); font-weight: 500; }
-  .detail-crumb .crumb-sep  { color: var(--border2); }
-  .detail-title { font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.3; }
-  .detail-subtitle { font-size: 13px; color: var(--text3); margin-top: 3px; font-weight: 400; }
-
-  .detail-body { padding: 20px 24px; }
-  .cat-section { margin-bottom: 18px; }
-  .cat-section:last-child { margin-bottom: 0; }
-  .cat-head {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 10px;
-  }
-  .cat-badge {
-    font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 20px;
-    text-transform: uppercase; letter-spacing: .04em;
-    background: var(--purple-bg); color: var(--purple);
-  }
-  .cat-badge.comercial { background: var(--blue-bg); color: var(--blue); }
-  .cat-badge.gestion   { background: var(--green-bg); color: var(--green); }
-  .cat-badge.beneficio { background: var(--amber-bg); color: var(--amber); }
-  .cat-pct { font-size: 13px; font-weight: 600; color: var(--text); font-family: 'DM Mono', monospace; }
-  .cat-bar {
-    flex: 1; height: 4px; background: var(--surface2);
-    border-radius: 2px; overflow: hidden; max-width: 120px;
-  }
-  .cat-bar-fill { height: 100%; border-radius: 2px; background: var(--border2); transition: width .4s ease; }
-  .comercial .cat-bar-fill { background: var(--blue); }
-  .gestion   .cat-bar-fill { background: var(--green); }
-  .beneficio .cat-bar-fill { background: var(--amber); }
-
-  .ind-list { display: flex; flex-direction: column; gap: 6px; }
-  .ind-row {
-    display: flex; align-items: baseline; gap: 10px;
-    padding: 7px 12px;
-    background: var(--surface2);
-    border-radius: 7px;
-  }
-  .ind-pct {
-    font-size: 12px; font-weight: 600;
-    color: var(--text); font-family: 'DM Mono', monospace;
-    min-width: 38px; flex-shrink: 0;
-  }
-  .ind-name { font-size: 13px; color: var(--text2); line-height: 1.4; }
-
-  .detail-note {
-    margin: 16px 24px 20px;
-    padding: 10px 14px;
-    border-left: 3px solid var(--info);
-    background: var(--info-bg);
-    border-radius: 0 7px 7px 0;
-    font-size: 12px; color: #185FA5; line-height: 1.5;
-  }
-  .detail-note.green { border-left-color: var(--note); background: var(--note-bg); color: var(--note); }
-
-  /* ── RESET ── */
-  .reset-row { display: flex; justify-content: center; margin-top: 24px; }
-  .reset-btn {
-    background: none; border: 1.5px solid var(--border2);
-    color: var(--text2); font-family: 'DM Sans', sans-serif;
-    font-size: 13px; padding: 8px 20px; border-radius: 8px;
-    cursor: pointer; transition: all .15s;
-  }
-  .reset-btn:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); }
-
-  /* ── EMPTY STATE ── */
-  .empty-state {
-    text-align: center; padding: 48px 24px;
-    color: var(--text3); font-size: 14px;
-  }
-  .empty-state .icon { font-size: 32px; margin-bottom: 12px; opacity: .4; }
-
-  @media (max-width: 500px) {
-    header { padding: 14px 16px; }
-    .page  { padding: 24px 12px 60px; }
-    .step-block { padding: 16px; }
-    .detail-header, .detail-body { padding: 16px; }
-  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+  .logo-mark{width:36px;height:36px;background:var(--purple);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .logo-mark span{color:white;font-weight:600;font-size:15px;letter-spacing:-.5px}
+  .header-text h1{font-size:15px;font-weight:600;color:var(--text);line-height:1.2}
+  .header-text p{font-size:12px;color:var(--text3);margin-top:1px}
+  .header-badge{margin-left:auto;background:var(--purple-bg);color:var(--purple);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;border:1px solid #d0cefc;white-space:nowrap}
+  .page{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+  .progress-wrap{margin-bottom:32px}
+  .progress-steps{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .progress-step{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text3);font-weight:500;transition:color .2s}
+  .progress-step.active{color:var(--text2)}.progress-step.done{color:var(--purple)}
+  .step-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);transition:background .2s;flex-shrink:0}
+  .progress-step.active .step-dot{background:var(--text2)}.progress-step.done .step-dot{background:var(--purple)}
+  .step-arrow{color:var(--border2);font-size:10px}
+  .step-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin-bottom:12px;box-shadow:var(--shadow);animation:fadeUp .25s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .step-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .step-num{width:22px;height:22px;background:var(--surface2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text2);flex-shrink:0;font-family:'DM Mono',monospace}
+  .step-title{font-size:12px;font-weight:500;color:var(--text2);letter-spacing:.03em;text-transform:uppercase}
+  .step-selected-badge{margin-left:auto;font-size:12px;font-weight:500;color:var(--purple);background:var(--purple-bg);padding:3px 10px;border-radius:20px;border:1px solid #d0cefc}
+  .chip-group{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .15s;line-height:1.3;text-align:left}
+  .chip:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-bg);transform:translateY(-1px)}
+  .chip.sel{border-color:var(--purple);color:var(--purple);background:var(--purple-bg);font-weight:500}
+  .chip.c-nivel:hover,.chip.c-nivel.sel{border-color:var(--green);color:var(--green);background:var(--green-bg)}
+  .chip.c-ubic:hover,.chip.c-ubic.sel{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+  .chip.c-eje:hover,.chip.c-eje.sel{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
+  .chip.c-esp:hover,.chip.c-esp.sel{border-color:var(--coral);color:var(--coral);background:var(--coral-bg)}
+  .detail-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);animation:fadeUp .25s ease both}
+  .detail-header{padding:20px 24px 16px;border-bottom:1px solid var(--border)}
+  .detail-crumb{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:10px}
+  .detail-crumb .crumb-item{font-size:11px;color:var(--text2);font-weight:500}
+  .detail-crumb .crumb-sep{font-size:11px;color:var(--border2)}
+  .detail-title{font-size:17px;font-weight:600;color:var(--text);line-height:1.3}
+  .detail-subtitle{font-size:13px;color:var(--text3);margin-top:3px}
+  .detail-body{padding:20px 24px}
+  .cat-section{margin-bottom:18px}.cat-section:last-child{margin-bottom:0}
+  .cat-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .cat-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em;background:var(--purple-bg);color:var(--purple)}
+  .cat-badge.comercial{background:var(--blue-bg);color:var(--blue)}
+  .cat-badge.gestion{background:var(--green-bg);color:var(--green)}
+  .cat-badge.beneficio{background:var(--amber-bg);color:var(--amber)}
+  .cat-pct{font-size:13px;font-weight:600;color:var(--text);font-family:'DM Mono',monospace}
+  .cat-bar{flex:1;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;max-width:120px}
+  .cat-bar-fill{height:100%;border-radius:2px;background:var(--border2)}
+  .comercial .cat-bar-fill{background:var(--blue)}.gestion .cat-bar-fill{background:var(--green)}.beneficio .cat-bar-fill{background:var(--amber)}
+  .ind-list{display:flex;flex-direction:column;gap:6px}
+  .ind-row{display:flex;align-items:baseline;gap:10px;padding:7px 12px;background:var(--surface2);border-radius:7px}
+  .ind-pct{font-size:12px;font-weight:600;color:var(--text);font-family:'DM Mono',monospace;min-width:38px;flex-shrink:0}
+  .ind-name{font-size:13px;color:var(--text2);line-height:1.4}
+  .detail-note{margin:0 24px 20px;padding:10px 14px;border-left:3px solid var(--info);background:var(--info-bg);border-radius:0 7px 7px 0;font-size:12px;color:var(--info);line-height:1.5}
+  .detail-note.green{border-left-color:var(--note);background:var(--note-bg);color:var(--note)}
+  .reset-row{display:flex;justify-content:center;margin-top:24px}
+  .reset-btn{background:none;border:1.5px solid var(--border2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 20px;border-radius:8px;cursor:pointer;transition:all .15s}
+  .reset-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-bg)}
+  @media(max-width:500px){header{padding:14px 16px}.page{padding:24px 12px 60px}.step-block{padding:16px}.detail-header,.detail-body{padding:16px}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo-mark"><span>PC</span></div>
-  <div class="header-text">
-    <h1>Árbol de Ponderaciones</h1>
-    <p>Criterios de evaluación porción variable</p>
-  </div>
+  <div class="header-text"><h1>Árbol de Ponderaciones</h1><p>Criterios de evaluación porción variable</p></div>
   <span class="header-badge">2026</span>
 </header>
-
 <div class="page">
-
-  <div class="progress-wrap">
-    <div class="progress-steps" id="progress-steps"></div>
-  </div>
-
+  <div class="progress-wrap"><div class="progress-steps" id="progress-steps"></div></div>
   <div id="steps-container"></div>
-
   <div id="detail-wrap"></div>
-
   <div class="reset-row" id="reset-row" style="display:none">
     <button class="reset-btn" onclick="resetAll()">↺ Empezar de nuevo</button>
   </div>
-
 </div>
-
 <script>
-/* ══════════════════════════════════════════════════════
-   ESTADO
-══════════════════════════════════════════════════════ */
-const S = { sede:null, rol:null, nivel:null, ubic:null, eje:null, esp:null };
-
-/* ══════════════════════════════════════════════════════
-   PERFILES
-══════════════════════════════════════════════════════ */
-const P = {
-  col_vp_expo:{title:'Vicepresidente Exportaciones',cats:[
-    {n:'Comercial',p:'90%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'40%'},{n:'Nº empresas con negocios',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_vp_inv:{title:'Vicepresidente Inversión',cats:[
-    {n:'Comercial',p:'90%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'40%'},{n:'Proyectos Inversión VPI',p:'30%'},{n:'Monto de Inversión VPI',p:'20%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_vp_tur:{title:'Vicepresidente Turismo',cats:[
-    {n:'Comercial',p:'90%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'},{n:'Nº eventos captados',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_ger_expo:{title:'Gerente Exportaciones / Director Regional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'20%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_ger_inv:{title:'Gerente Inversión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos de Inversión Gerencia',p:'15%'},{n:'Monto de Inversión Gerencia',p:'5%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con visitas instalado',p:'15%'}]},
-  ]},
-  col_ger_tur_vac:{title:'Gerente Turismo Vacacional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto paquetes',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_ger_inno:{title:'Gerente Innovación y Sinergias',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'10%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº asistentes PFE turismo',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_ger_reuniones:{title:'Gerente Turismo Reuniones',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_coord_fi:{title:'Coordinador Formación Internacional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº participantes capacitados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº seminarios realizados',p:'30%'},{n:'Nº nuevos programas desarrollados',p:'20%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_coord_pi:{title:'Coordinador Proyectos para la Internacionalización',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Proyectos de Expansión Internacional',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº intervenciones totales (fuera y dentro de convocatoria)',p:'35%'},{n:'Nº empresas con servicios (fuera y dentro de convocatoria)',p:'15%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_coord_reg_tur:{title:'Coordinador Regional · Turismo',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-  ]},
-  col_coord_reg_inv:{title:'Coordinador Regional · Inversión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'60%'}]},
-  ]},
-  col_coord_reg_expo:{title:'Coordinador Regional · Exportaciones',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]},
-  ],note:'Agrupa: Coordinador Regional, Asesor Exportaciones Regional y Asesor Multieje Regional.'},
-  col_asesor_expo_bog:{title:'Asesor Exportaciones · Bogotá',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_fi:{title:'Asesor Coordinación Formación Internacional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº participantes capacitados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº seminarios realizados',p:'30%'},{n:'Nº nuevos programas desarrollados',p:'30%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_pi:{title:'Asesor Proyectos para la Internacionalización',cats:[
-    {n:'Comercial',p:'20%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'}]},
-    {n:'Gestión',p:'80%',inds:[{n:'Nº intervenciones totales (fuera y dentro de convocatoria)',p:'50%'},{n:'Nº empresas con servicios (fuera y dentro de convocatoria)',p:'30%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_expo_reg:{title:'Asesor Exportaciones · Regional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_inv_bog:{title:'Asesor Inversión · Bogotá',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión',p:'15%'},{n:'Monto de Inversión',p:'5%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con visitas instalado',p:'15%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_inv_reg:{title:'Asesor Inversión · Regional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'60%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_dir_reg_inv:{title:'Director Regional · Inversión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_asesor_tur_vac:{title:'Asesor Turismo Vacacional',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto paquetes',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'20%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_aero:{title:'Asesor Turismo Innovación y Sinergias · Aerolíneas',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Oportunidades en etapa 0 y 1',p:'20%'},{n:'Oportunidades en etapa 2 y 3',p:'40%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_ruta:{title:'Asesor Turismo Innovación y Sinergias · Ruta Exportadora',cats:[
-    {n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},
-    {n:'Gestión',p:'80%',inds:[{n:'Nº asistentes PFE turismo',p:'25%'},{n:'Proyecto de gestión',p:'20%'},{n:'Nº empresas PyA con plan de trabajo vigente',p:'35%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_hoteles:{title:'Asesor Turismo Innovación y Sinergias · Hoteles',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'20%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_reuniones:{title:'Asesor Turismo Reuniones',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_dir_reg_tur:{title:'Director Regional · Turismo',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto de noches',p:'5%'},{n:'Monto de gasto paquetes',p:'5%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'5%'},{n:'Nº asistentes PFE turismo',p:'5%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  col_dir_reg_tur_cta:{title:'Director Regional · Turismo (Cartagena)',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Visitantes Cruceros',p:'5%'},{n:'Monto de gasto de noches',p:'2.5%'},{n:'Monto de gasto paquetes',p:'2.5%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ],note:'Variante Cartagena: incluye Visitantes Cruceros en Comercial.'},
-  col_asesor_reg_tur:{title:'Asesor Regional Turismo · General',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto de noches',p:'5%'},{n:'Monto de gasto paquetes',p:'5%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_reg_cru:{title:'Asesor Regional Turismo · Cruceros',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Visitantes Cruceros',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_reg_reu:{title:'Asesor Regional Turismo · Reuniones',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'50%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_reg_vac:{title:'Asesor Regional Turismo · Vacacional y Sinergias',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'10%'},{n:'Monto de gasto paquetes',p:'10%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_reg_baq:{title:'Asesor Regional Turismo · Barranquilla y Riohacha',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto noches y/o paquetes',p:'10%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'20%'},{n:'Nº asistentes PFE turismo',p:'20%'},{n:'Proyecto gestión',p:'20%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_tur_gestion:{title:'Asesor Turismo · Gestión',cats:[
-    {n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},
-    {n:'Gestión',p:'80%',inds:[{n:'Nº empresas con servicios',p:'60%'},{n:'Proyecto gestión',p:'20%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_tur_sost:{title:'Asesor Turismo · Sostenibilidad',cats:[
-    {n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},
-    {n:'Gestión',p:'80%',inds:[{n:'Proyecto gestión',p:'20%'},{n:'Proyecto gestión – sostenibilidad',p:'60%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  col_asesor_multieje_sucre:{title:'Asesor Multieje · Sucre',cats:[
-    {n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},
-    {n:'Gestión',p:'80%',inds:[{n:'Nº empresas con servicios',p:'20%'},{n:'Nº asistentes PFE turismo',p:'30%'},{n:'Proyecto gestión',p:'30%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  ext_dir_expo:{title:'Director Oficom · Exportaciones',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Compradores con negocios',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nuevas empresas exterior con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas exterior con servicios de exportación',p:'20%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ],ice:true},
-  ext_dir_inv:{title:'Director Oficom · Inversión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión (equipo)',p:'15%'},{n:'Monto de Inversión (equipo)',p:'5%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'20%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con primeras visitas',p:'15%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  ext_dir_tur_oficom:{title:'Director Oficom · Turismo',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados (turismo de reuniones)',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ]},
-  ext_dir_tur_esp:{title:'Director Turismo · Especializado',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Visitantes cruceros',p:'20%'}]},
-    {n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},
-    {n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]},
-  ],note:'Difiere del Director Oficom: reemplaza "Eventos captados" por "Visitantes cruceros".'},
-  ext_asesor_expo:{title:'Asesor Exportaciones Oficom',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Compradores con negocios',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas exterior con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'20%'},{n:'Nº empresas exterior con servicios de exportación',p:'20%'}]},
-  ],note:'Agrupa: Director Exportaciones Oficom, Asesor Exportaciones Oficom y Asesor Multieje Oficom. Aplica a Senior y Junior.'},
-  ext_asesor_inv:{title:'Asesor Oficom · Inversión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión',p:'15%'},{n:'Monto de inversión',p:'5%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con primeras visitas',p:'15%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  ext_asesor_tur_general:{title:'Asesor Oficom Turismo · General',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  ext_asesor_tur_gestion:{title:'Asesor Oficom Turismo · Gestión',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
-  ext_asesor_tur_aero:{title:'Asesor Oficom Turismo · Aerolíneas',cats:[
-    {n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},
-    {n:'Gestión',p:'60%',inds:[{n:'Oportunidades en etapa 0 y 1',p:'20%'},{n:'Oportunidades en etapa 2 y 3',p:'40%'}]},
-  ],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+const S={sede:null,rol:null,nivel:null,ubic:null,eje:null,esp:null};
+const P={
+  col_vp_expo:{title:'Vicepresidente Exportaciones',cats:[{n:'Comercial',p:'90%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'40%'},{n:'Nº empresas con negocios',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_vp_inv:{title:'Vicepresidente Inversión',cats:[{n:'Comercial',p:'90%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'40%'},{n:'Proyectos Inversión VPI',p:'30%'},{n:'Monto de Inversión VPI',p:'20%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_vp_tur:{title:'Vicepresidente Turismo',cats:[{n:'Comercial',p:'90%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'},{n:'Nº eventos captados',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_ger_expo:{title:'Gerente Exportaciones',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'20%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_ger_inv:{title:'Gerente Inversión',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos de Inversión Gerencia',p:'15%'},{n:'Monto de Inversión Gerencia',p:'5%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con visitas instalado',p:'15%'}]}]},
+  col_ger_tur_vac:{title:'Gerente Turismo Vacacional',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto paquetes',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_ger_inno:{title:'Gerente Innovación y Sinergias',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'10%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº asistentes PFE turismo',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_ger_reuniones:{title:'Gerente Turismo Reuniones',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_dir_expo:{title:'Director Regional · Exportaciones',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'20%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}],note:'Comparte indicadores con el Gerente Exportaciones.'},
+  col_dir_inv:{title:'Director Regional · Inversión',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_dir_tur:{title:'Director Regional · Turismo',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto de noches',p:'5%'},{n:'Monto de gasto paquetes',p:'5%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'5%'},{n:'Nº asistentes PFE turismo',p:'5%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_dir_tur_cta:{title:'Director Regional · Turismo (Cartagena)',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Visitantes Cruceros',p:'5%'},{n:'Monto de gasto de noches',p:'2.5%'},{n:'Monto de gasto paquetes',p:'2.5%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Nº asistentes PFE turismo',p:'10%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}],note:'Variante Cartagena: incluye Visitantes Cruceros en Comercial.'},
+  col_coord_fi:{title:'Coordinador Formación Internacional',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº participantes capacitados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº seminarios realizados',p:'30%'},{n:'Nº nuevos programas desarrollados',p:'20%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_coord_pi:{title:'Coordinador Proyectos para la Internacionalización',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Proyectos de Expansión Internacional',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº intervenciones totales (fuera y dentro de convocatoria)',p:'35%'},{n:'Nº empresas con servicios (fuera y dentro de convocatoria)',p:'15%'},{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  col_coord_reg_expo:{title:'Coordinador Regional · Exportaciones',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]}],note:'Agrupa: Coordinador Regional, Asesor Exportaciones Regional y Asesor Multieje Regional.'},
+  col_coord_reg_inv:{title:'Coordinador Regional · Inversión',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'60%'}]}]},
+  col_coord_reg_tur:{title:'Coordinador Regional · Turismo',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]}]},
+  col_asesor_expo_bog:{title:'Asesor Exportaciones · Bogotá',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_fi:{title:'Asesor Coordinación Formación Internacional',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº participantes capacitados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº seminarios realizados',p:'30%'},{n:'Nº nuevos programas desarrollados',p:'30%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_pi:{title:'Asesor Proyectos para la Internacionalización',cats:[{n:'Comercial',p:'20%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'}]},{n:'Gestión',p:'80%',inds:[{n:'Nº intervenciones totales (fuera y dentro de convocatoria)',p:'50%'},{n:'Nº empresas con servicios (fuera y dentro de convocatoria)',p:'30%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_expo_reg:{title:'Asesor Exportaciones · Regional',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Nº empresas con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas colombianas con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas colombianas con servicios de exportación',p:'30%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_inv_bog:{title:'Asesor Inversión · Bogotá',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión',p:'15%'},{n:'Monto de Inversión',p:'5%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con visitas instalado',p:'15%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_inv_reg:{title:'Asesor Inversión · Regional',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Nº proyectos de inversión de la región – Buscador de oportunidades',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades regionales creadas en el año (etapas 1–4) ≠ otros',p:'60%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_tur_vac:{title:'Asesor Turismo Vacacional',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto paquetes',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'20%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_aero:{title:'Asesor Turismo Innovación y Sinergias · Aerolíneas',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Oportunidades en etapa 0 y 1',p:'20%'},{n:'Oportunidades en etapa 2 y 3',p:'40%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_ruta:{title:'Asesor Turismo Innovación y Sinergias · Ruta Exportadora',cats:[{n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},{n:'Gestión',p:'80%',inds:[{n:'Nº asistentes PFE turismo',p:'25%'},{n:'Proyecto de gestión',p:'20%'},{n:'Nº empresas PyA con plan de trabajo vigente',p:'35%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_hoteles:{title:'Asesor Turismo Innovación y Sinergias · Hoteles',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto de gestión',p:'20%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reuniones:{title:'Asesor Turismo Reuniones',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reg_tur:{title:'Asesor Regional Turismo · General',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto de noches',p:'5%'},{n:'Monto de gasto paquetes',p:'5%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reg_cru:{title:'Asesor Regional Turismo · Cruceros',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Visitantes Cruceros',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reg_reu:{title:'Asesor Regional Turismo · Reuniones',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'50%'},{n:'Nº asistentes PFE turismo',p:'10%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reg_vac:{title:'Asesor Regional Turismo · Vacacional y Sinergias',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Monto de gasto de noches',p:'10%'},{n:'Monto de gasto paquetes',p:'10%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'40%'},{n:'Proyecto gestión',p:'10%'},{n:'Nº asistentes PFE turismo',p:'10%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_reg_baq:{title:'Asesor Regional Turismo · Barranquilla y Riohacha',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'10%'},{n:'Monto de gasto noches y/o paquetes',p:'10%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'20%'},{n:'Nº asistentes PFE turismo',p:'20%'},{n:'Proyecto gestión',p:'20%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_tur_gestion:{title:'Asesor Turismo · Gestión',cats:[{n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},{n:'Gestión',p:'80%',inds:[{n:'Nº empresas con servicios',p:'60%'},{n:'Proyecto gestión',p:'20%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_tur_sost:{title:'Asesor Turismo · Sostenibilidad',cats:[{n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},{n:'Gestión',p:'80%',inds:[{n:'Proyecto gestión',p:'20%'},{n:'Proyecto gestión – sostenibilidad',p:'60%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  col_asesor_multieje_sucre:{title:'Asesor Multieje · Sucre',cats:[{n:'Comercial',p:'20%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'}]},{n:'Gestión',p:'80%',inds:[{n:'Nº empresas con servicios',p:'20%'},{n:'Nº asistentes PFE turismo',p:'30%'},{n:'Proyecto gestión',p:'30%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  ext_dir_expo:{title:'Director Oficom · Exportaciones',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Compradores con negocios',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nuevas empresas exterior con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'10%'},{n:'Nº empresas exterior con servicios de exportación',p:'20%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}],ice:true},
+  ext_dir_inv:{title:'Director Oficom · Inversión',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión (equipo)',p:'15%'},{n:'Monto de Inversión (equipo)',p:'5%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'20%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con primeras visitas',p:'15%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  ext_dir_tur_oficom:{title:'Director Oficom · Turismo',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados (turismo de reuniones)',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}]},
+  ext_dir_tur_esp:{title:'Director Turismo · Especializado',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Visitantes cruceros',p:'20%'}]},{n:'Gestión',p:'50%',inds:[{n:'Nº empresas con servicios',p:'50%'}]},{n:'Beneficio / Costo',p:'10%',inds:[{n:'% cumplimiento / % ejecución presupuestal',p:'10%'}]}],note:'Difiere del Director Oficom: reemplaza "Eventos captados" por "Visitantes cruceros".'},
+  ext_asesor_expo:{title:'Asesor Exportaciones Oficom',cats:[{n:'Comercial',p:'40%',inds:[{n:'Nº empresas con negocios (Mipymes)',p:'20%'},{n:'Compradores con negocios',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nuevas empresas exterior con servicios de exportación',p:'20%'},{n:'Nuevas empresas con oportunidades (1–4)',p:'20%'},{n:'Nº empresas exterior con servicios de exportación',p:'20%'}]}],note:'Agrupa: Director Exportaciones Oficom, Asesor Exportaciones Oficom y Asesor Multieje Oficom. Aplica a Senior y Junior.'},
+  ext_asesor_inv:{title:'Asesor Oficom · Inversión',cats:[{n:'Comercial',p:'40%',inds:[{n:'Proyectos Inversión VPI – Apuestas Gobierno y habilitadores',p:'20%'},{n:'Proyectos Inversión',p:'15%'},{n:'Monto de inversión',p:'5%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº oportunidades creadas en el año (etapas 1–4) ≠ otros',p:'30%'},{n:'Nº oportunidades en etapas 1–3 ≠ otros',p:'15%'},{n:'Nº empresas con primeras visitas',p:'15%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  ext_asesor_tur_general:{title:'Asesor Oficom Turismo · General',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'10%'},{n:'VPT – Nº Sillas anuales',p:'10%'},{n:'Nº eventos captados',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  ext_asesor_tur_gestion:{title:'Asesor Oficom Turismo · Gestión',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Nº empresas con servicios',p:'60%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
+  ext_asesor_tur_aero:{title:'Asesor Oficom Turismo · Aerolíneas',cats:[{n:'Comercial',p:'40%',inds:[{n:'VPT – Nº Frecuencias anuales',p:'20%'},{n:'VPT – Nº Sillas anuales',p:'20%'}]},{n:'Gestión',p:'60%',inds:[{n:'Oportunidades en etapa 0 y 1',p:'20%'},{n:'Oportunidades en etapa 2 y 3',p:'40%'}]}],note:'Aplica a Senior y Junior sin cambio de indicadores.'},
 };
 
-/* ══ ÁRBOL DE OPCIONES ══ */
-function getSteps() {
-  const steps = [];
-  const {sede,rol,nivel,ubic,eje,esp} = S;
+const ROLES_COL=[{id:'vp',l:'Vicepresidente'},{id:'ger',l:'Gerente'},{id:'dir',l:'Director Regional'},{id:'coord',l:'Coordinador'},{id:'asesor',l:'Asesor'}];
+const ROLES_EXT=[{id:'dir',l:'Director Oficom'},{id:'asesor',l:'Asesor'}];
 
-  // Paso 1: Sede
-  steps.push({key:'sede', label:'Sede', cls:'', opts:[{id:'col',l:'Colombia'},{id:'ext',l:'Exterior'}]});
-  if(!sede) return steps;
-
-  // Paso 2: Rol
-  const rolesCol = [{id:'vp',l:'Vicepresidente'},{id:'ger',l:'Gerente / Director Regional'},{id:'coord',l:'Coordinador'},{id:'asesor',l:'Asesor'}];
-  const rolesExt = [{id:'dir',l:'Director Oficom'},{id:'asesor',l:'Asesor'}];
-  steps.push({key:'rol', label:'Rol general', cls:'', opts: sede==='col'?rolesCol:rolesExt});
-  if(!rol) return steps;
-
-  // Paso 3: Nivel (solo Asesor)
-  if(rol==='asesor') {
-    steps.push({key:'nivel', label:'Nivel', cls:'c-nivel', opts:[{id:'senior',l:'Senior'},{id:'junior',l:'Junior'}]});
-    if(!nivel) return steps;
+function getEjes(){
+  const {sede,rol,ubic}=S;
+  if(sede==='ext') return [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
+  if(rol==='vp'||rol==='ger'||rol==='dir') return [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
+  if(rol==='coord'){
+    if(ubic==='bogota') return [{id:'expo_fi',l:'Exportaciones – Form. Internacional'},{id:'expo_pi',l:'Exportaciones – Proy. Internacionalización'}];
+    return [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
   }
-
-  // Paso 3/4: Ubicación (Colombia: Asesor y Coordinador)
-  if(sede==='col' && (rol==='asesor'||rol==='coord')) {
-    steps.push({key:'ubic', label:'Ubicación', cls:'c-ubic', opts:[{id:'bogota',l:'Bogotá'},{id:'regional',l:'Regional'}]});
-    if(!ubic) return steps;
+  if(rol==='asesor'){
+    if(ubic==='bogota') return [{id:'expo',l:'Exportaciones'},{id:'expo_fi',l:'Exportaciones – Form. Internacional'},{id:'expo_pi',l:'Exportaciones – Proy. Internacionalización'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
+    return [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
   }
-
-  // Eje
-  let ejeOpts = [];
-  if(sede==='ext') {
-    ejeOpts = [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
-  } else if(rol==='vp'||rol==='ger') {
-    ejeOpts = [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
-  } else if(rol==='coord') {
-    if(ubic==='bogota') ejeOpts = [{id:'expo_fi',l:'Exportaciones – Formación Internacional'},{id:'expo_pi',l:'Exportaciones – Proyectos Internacionalización'}];
-    else ejeOpts = [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
-  } else if(rol==='asesor') {
-    if(ubic==='bogota') ejeOpts = [{id:'expo',l:'Exportaciones'},{id:'expo_fi',l:'Exportaciones – Formación Internacional'},{id:'expo_pi',l:'Exportaciones – Proyectos Internacionalización'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
-    else ejeOpts = [{id:'expo',l:'Exportaciones'},{id:'inv',l:'Inversión'},{id:'tur',l:'Turismo'}];
-  }
-  steps.push({key:'eje', label:'Eje', cls:'c-eje', opts:ejeOpts});
-  if(!eje) return steps;
-
-  // Especialidad
-  let espOpts = [];
-  if(sede==='ext' && eje==='tur') {
-    if(rol==='dir') espOpts = [{id:'oficom',l:'Director Oficom'},{id:'esp',l:'Director Turismo'}];
-    else espOpts = [{id:'general',l:'General'},{id:'gestion',l:'Gestión'},{id:'aero',l:'Aerolíneas'}];
-  }
-  if(sede==='col' && rol==='ger' && eje==='tur') {
-    espOpts = [{id:'vac',l:'Turismo Vacacional'},{id:'inno',l:'Innovación y Sinergias'},{id:'reu',l:'Turismo Reuniones'}];
-  }
-  if(sede==='col' && rol==='asesor' && eje==='tur') {
-    if(ubic==='bogota') espOpts = [{id:'vac',l:'Vacacional'},{id:'aero',l:'Aerolíneas'},{id:'ruta',l:'Ruta Exportadora'},{id:'hoteles',l:'Hoteles'},{id:'reuniones',l:'Reuniones'}];
-    else espOpts = [{id:'general',l:'General'},{id:'cruceros',l:'Cruceros'},{id:'reuniones',l:'Reuniones'},{id:'vac',l:'Vacacional y Sinergias'},{id:'baq',l:'Barranquilla y Riohacha'},{id:'gestion',l:'Gestión'},{id:'sost',l:'Sostenibilidad'},{id:'sucre',l:'Multieje Sucre'}];
-  }
-  if(espOpts.length) {
-    steps.push({key:'esp', label:'Especialidad', cls:'c-esp', opts:espOpts});
-  }
-
-  return steps;
+  return [];
 }
 
-function resolveKey() {
-  const {sede,rol,nivel,ubic,eje,esp} = S;
-  if(sede==='ext') {
-    if(rol==='dir') {
-      if(eje==='expo') return 'ext_dir_expo';
-      if(eje==='inv')  return 'ext_dir_inv';
-      if(eje==='tur')  return esp==='oficom'?'ext_dir_tur_oficom':esp==='esp'?'ext_dir_tur_esp':null;
-    }
-    if(rol==='asesor') {
-      if(eje==='expo') return 'ext_asesor_expo';
-      if(eje==='inv')  return 'ext_asesor_inv';
-      if(eje==='tur')  return {general:'ext_asesor_tur_general',gestion:'ext_asesor_tur_gestion',aero:'ext_asesor_tur_aero'}[esp]||null;
-    }
+function getEsps(){
+  const {sede,rol,ubic,eje}=S;
+  if(sede==='ext'){
+    if(eje!=='tur') return [];
+    if(rol==='dir') return [{id:'oficom',l:'Director Oficom'},{id:'esp',l:'Director Turismo'}];
+    return [{id:'general',l:'General'},{id:'gestion',l:'Gestión'},{id:'aero',l:'Aerolíneas'}];
+  }
+  if(rol==='vp') return [];
+  if(rol==='ger'){if(eje==='tur') return [{id:'vac',l:'Turismo Vacacional'},{id:'inno',l:'Innovación y Sinergias'},{id:'reu',l:'Turismo Reuniones'}];return [];}
+  if(rol==='dir'){if(eje==='tur') return [{id:'gen',l:'Director Regional'},{id:'cta',l:'Director Regional (Cartagena)'}];return [];}
+  if(rol==='coord') return [];
+  if(rol==='asesor'){
+    if(eje!=='tur') return [];
+    if(ubic==='bogota') return [{id:'vac',l:'Vacacional'},{id:'aero',l:'Aerolíneas'},{id:'ruta',l:'Ruta Exportadora'},{id:'hoteles',l:'Hoteles'},{id:'reuniones',l:'Reuniones'}];
+    return [{id:'general',l:'General'},{id:'cruceros',l:'Cruceros'},{id:'reuniones',l:'Reuniones'},{id:'vac',l:'Vacacional y Sinergias'},{id:'baq',l:'Barranquilla y Riohacha'},{id:'gestion',l:'Gestión'},{id:'sost',l:'Sostenibilidad'},{id:'sucre',l:'Multieje Sucre'}];
+  }
+  return [];
+}
+
+function resolveKey(){
+  const {sede,rol,ubic,eje,esp}=S;
+  if(sede==='ext'){
+    if(rol==='dir'){if(eje==='expo') return 'ext_dir_expo';if(eje==='inv') return 'ext_dir_inv';if(eje==='tur') return esp==='oficom'?'ext_dir_tur_oficom':esp==='esp'?'ext_dir_tur_esp':null;}
+    if(rol==='asesor'){if(eje==='expo') return 'ext_asesor_expo';if(eje==='inv') return 'ext_asesor_inv';if(eje==='tur') return {general:'ext_asesor_tur_general',gestion:'ext_asesor_tur_gestion',aero:'ext_asesor_tur_aero'}[esp]||null;}
     return null;
   }
-  // Colombia
   if(rol==='vp') return {expo:'col_vp_expo',inv:'col_vp_inv',tur:'col_vp_tur'}[eje]||null;
-  if(rol==='ger') {
-    if(eje==='expo') return 'col_ger_expo';
-    if(eje==='inv')  return 'col_ger_inv';
-    if(eje==='tur')  return {vac:'col_ger_tur_vac',inno:'col_ger_inno',reu:'col_ger_reuniones'}[esp]||null;
-  }
-  if(rol==='coord') {
-    if(eje==='expo_fi') return 'col_coord_fi';
-    if(eje==='expo_pi') return 'col_coord_pi';
-    if(eje==='expo')    return 'col_coord_reg_expo';
-    if(eje==='inv')     return 'col_coord_reg_inv';
-    if(eje==='tur')     return 'col_coord_reg_tur';
-  }
-  if(rol==='asesor') {
-    if(eje==='expo')    return ubic==='bogota'?'col_asesor_expo_bog':'col_asesor_expo_reg';
-    if(eje==='expo_fi') return 'col_asesor_fi';
-    if(eje==='expo_pi') return 'col_asesor_pi';
-    if(eje==='inv')     return ubic==='bogota'?'col_asesor_inv_bog':'col_asesor_inv_reg';
-    if(eje==='tur') {
+  if(rol==='ger'){if(eje==='expo') return 'col_ger_expo';if(eje==='inv') return 'col_ger_inv';if(eje==='tur') return {vac:'col_ger_tur_vac',inno:'col_ger_inno',reu:'col_ger_reuniones'}[esp]||null;}
+  if(rol==='dir'){if(eje==='expo') return 'col_dir_expo';if(eje==='inv') return 'col_dir_inv';if(eje==='tur') return esp==='gen'?'col_dir_tur':esp==='cta'?'col_dir_tur_cta':null;}
+  if(rol==='coord'){if(eje==='expo_fi') return 'col_coord_fi';if(eje==='expo_pi') return 'col_coord_pi';if(eje==='expo') return 'col_coord_reg_expo';if(eje==='inv') return 'col_coord_reg_inv';if(eje==='tur') return 'col_coord_reg_tur';}
+  if(rol==='asesor'){
+    if(eje==='expo') return ubic==='bogota'?'col_asesor_expo_bog':'col_asesor_expo_reg';
+    if(eje==='expo_fi') return 'col_asesor_fi';if(eje==='expo_pi') return 'col_asesor_pi';
+    if(eje==='inv') return ubic==='bogota'?'col_asesor_inv_bog':'col_asesor_inv_reg';
+    if(eje==='tur'){
       if(ubic==='bogota') return {vac:'col_asesor_tur_vac',aero:'col_asesor_aero',ruta:'col_asesor_ruta',hoteles:'col_asesor_hoteles',reuniones:'col_asesor_reuniones'}[esp]||null;
       return {general:'col_asesor_reg_tur',cruceros:'col_asesor_reg_cru',reuniones:'col_asesor_reg_reu',vac:'col_asesor_reg_vac',baq:'col_asesor_reg_baq',gestion:'col_asesor_tur_gestion',sost:'col_asesor_tur_sost',sucre:'col_asesor_multieje_sucre'}[esp]||null;
     }
@@ -595,162 +199,76 @@ function resolveKey() {
   return null;
 }
 
-/* ══ RENDER ══ */
-function render() {
-  const steps = getSteps();
-  const container = document.getElementById('steps-container');
-  const detailWrap = document.getElementById('detail-wrap');
-  container.innerHTML = '';
-  detailWrap.innerHTML = '';
+function getSteps(){
+  const steps=[];const{sede,rol,nivel,ubic,eje}=S;
+  steps.push({key:'sede',label:'Sede',cls:'',opts:[{id:'col',l:'Colombia'},{id:'ext',l:'Exterior'}]});
+  if(!sede) return steps;
+  steps.push({key:'rol',label:'Rol general',cls:'',opts:sede==='col'?ROLES_COL:ROLES_EXT});
+  if(!rol) return steps;
+  if(rol==='asesor'){steps.push({key:'nivel',label:'Nivel',cls:'c-nivel',opts:[{id:'senior',l:'Senior'},{id:'junior',l:'Junior'}]});if(!nivel) return steps;}
+  if(sede==='col'&&(rol==='asesor'||rol==='coord')){steps.push({key:'ubic',label:'Ubicación',cls:'c-ubic',opts:[{id:'bogota',l:'Bogotá'},{id:'regional',l:'Regional'}]});if(!ubic) return steps;}
+  steps.push({key:'eje',label:'Eje',cls:'c-eje',opts:getEjes()});
+  if(!eje) return steps;
+  const esps=getEsps();if(esps.length) steps.push({key:'esp',label:'Especialidad',cls:'c-esp',opts:esps});
+  return steps;
+}
 
-  // Progress
-  const prog = document.getElementById('progress-steps');
-  const stepLabels = steps.map(s => s.label);
-  prog.innerHTML = stepLabels.map((l,i) => {
-    const val = S[steps[i].key];
-    const cls = val ? 'done' : (i === stepLabels.findIndex((_,j) => !S[steps[j].key]) ? 'active' : '');
-    return `<span class="progress-step ${cls}"><span class="step-dot"></span>${l}</span>${i<stepLabels.length-1?'<span class="step-arrow">›</span>':''}`;
-  }).join('');
-
-  // Render each step
-  steps.forEach((step, i) => {
-    const val = S[step.key];
-    const isActive = !val;
-    const block = document.createElement('div');
-    block.className = 'step-block';
-    block.style.animationDelay = (i * 0.04) + 's';
-
-    const selectedLabel = val ? step.opts.find(o => o.id === val)?.l : null;
-
-    block.innerHTML = `
-      <div class="step-header">
-        <div class="step-num">${i+1}</div>
-        <div class="step-title">${step.label}</div>
-        ${selectedLabel ? `<div class="step-selected-badge">${selectedLabel}</div>` : ''}
-      </div>
-      <div class="chip-group">
-        ${step.opts.map(o => `
-          <button class="chip ${step.cls} ${val===o.id?'sel':''}"
-            onclick="pick('${step.key}','${o.id}')">
-            ${o.l}
-          </button>
-        `).join('')}
-      </div>
-    `;
-    container.appendChild(block);
-
-    if(isActive) return; // don't render further steps if this one isn't answered
+function render(){
+  const steps=getSteps();
+  document.getElementById('steps-container').innerHTML='';
+  document.getElementById('detail-wrap').innerHTML='';
+  const prog=document.getElementById('progress-steps');
+  prog.innerHTML=steps.map((s,i)=>{const val=S[s.key];const fi=steps.findIndex(x=>!S[x.key]);const cls=val?'done':(i===fi?'active':'');return`<span class="progress-step ${cls}"><span class="step-dot"></span>${s.label}</span>${i<steps.length-1?'<span class="step-arrow">›</span>':''}`}).join('');
+  steps.forEach((step,i)=>{
+    const val=S[step.key];
+    const block=document.createElement('div');block.className='step-block';block.style.animationDelay=(i*.04)+'s';
+    const sl=val?step.opts.find(o=>o.id===val)?.l:null;
+    block.innerHTML=`<div class="step-header"><div class="step-num">${i+1}</div><div class="step-title">${step.label}</div>${sl?`<div class="step-selected-badge">${sl}</div>`:''}</div><div class="chip-group">${step.opts.map(o=>`<button class="chip ${step.cls} ${val===o.id?'sel':''}" onclick="pick('${step.key}','${o.id}')">${o.l}</button>`).join('')}</div>`;
+    document.getElementById('steps-container').appendChild(block);
+    if(!val) return;
   });
-
-  // Detail
-  const key = resolveKey();
-  if(key && P[key]) {
-    renderDetail(P[key]);
-    document.getElementById('reset-row').style.display = 'flex';
-  } else {
-    document.getElementById('reset-row').style.display = 'none';
-  }
+  const key=resolveKey();
+  if(key&&P[key]){renderDetail(P[key]);document.getElementById('reset-row').style.display='flex';}
+  else document.getElementById('reset-row').style.display='none';
 }
 
-function pick(step, val) {
-  S[step] = val;
-  // reset downstream
-  const order = ['sede','rol','nivel','ubic','eje','esp'];
-  const idx = order.indexOf(step);
-  order.slice(idx+1).forEach(k => S[k] = null);
+function pick(step,val){
+  S[step]=val;
+  const order=['sede','rol','nivel','ubic','eje','esp'];
+  order.slice(order.indexOf(step)+1).forEach(k=>S[k]=null);
   render();
-  // scroll to next unanswered step smoothly
-  setTimeout(() => {
-    const blocks = document.querySelectorAll('.step-block');
-    const order2 = ['sede','rol','nivel','ubic','eje','esp'];
-    const nextIdx = order2.findIndex(k => !S[k]);
-    if(nextIdx >= 0 && blocks[nextIdx]) {
-      blocks[nextIdx].scrollIntoView({behavior:'smooth', block:'center'});
-    } else if(document.getElementById('detail-wrap').children.length) {
-      document.getElementById('detail-wrap').scrollIntoView({behavior:'smooth', block:'start'});
-    }
-  }, 80);
+  setTimeout(()=>{
+    const blocks=document.querySelectorAll('.step-block');
+    const ni=['sede','rol','nivel','ubic','eje','esp'].findIndex(k=>!S[k]);
+    if(ni>=0&&blocks[ni]) blocks[ni].scrollIntoView({behavior:'smooth',block:'center'});
+    else if(document.getElementById('detail-wrap').children.length) document.getElementById('detail-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+  },80);
 }
 
-function catClass(n) {
-  const l = n.toLowerCase();
-  if(l.includes('comercial')) return 'comercial';
-  if(l.includes('gesti')) return 'gestion';
-  if(l.includes('beneficio')) return 'beneficio';
-  return '';
-}
+function catClass(n){const l=n.toLowerCase();if(l.includes('comercial')) return 'comercial';if(l.includes('gesti')) return 'gestion';if(l.includes('beneficio')) return 'beneficio';return '';}
 
-function pctNum(p) {
-  return parseFloat(p.replace('%','').replace(',','.')) || 0;
-}
-
-function crumbParts() {
-  const {sede,rol,nivel,ubic,eje,esp} = S;
-  const out = [];
+function crumbParts(){
+  const{sede,rol,nivel,ubic,eje,esp}=S;const out=[];
   if(sede) out.push(sede==='col'?'Colombia':'Exterior');
-  const rl = {vp:'Vicepresidente',ger:'Gerente / Dir. Regional',coord:'Coordinador',asesor:'Asesor',dir:'Director Oficom'};
-  if(rol) out.push(rl[rol]||rol);
-  if(nivel) out.push(nivel==='senior'?'Senior':'Junior');
-  if(ubic) out.push(ubic==='bogota'?'Bogotá':'Regional');
-  const el = {expo:'Exportaciones',expo_fi:'Form. Internacional',expo_pi:'Proy. Internacionalización',inv:'Inversión',tur:'Turismo'};
+  const rl={vp:'Vicepresidente',ger:'Gerente',dir:sede==='col'?'Director Regional':'Director Oficom',coord:'Coordinador',asesor:'Asesor'};
+  if(rol) out.push(rl[rol]||rol);if(nivel) out.push(nivel==='senior'?'Senior':'Junior');if(ubic) out.push(ubic==='bogota'?'Bogotá':'Regional');
+  const el={expo:'Exportaciones',expo_fi:'Form. Internacional',expo_pi:'Proy. Internacionalización',inv:'Inversión',tur:'Turismo'};
   if(eje) out.push(el[eje]||eje);
-  if(esp) {
-    const sl = {oficom:'Director Oficom',esp:'Director Turismo',general:'General',gestion:'Gestión',aero:'Aerolíneas',vac:'Vacacional',ruta:'Ruta Exportadora',hoteles:'Hoteles',reuniones:'Reuniones',cruceros:'Cruceros',baq:'Barranquilla y Riohacha',sost:'Sostenibilidad',sucre:'Multieje Sucre',inno:'Innovación y Sinergias',reu:'Turismo Reuniones'};
-    out.push(sl[esp]||esp);
-  }
+  if(esp){const sl={oficom:'Director Oficom',esp:'Director Turismo',gen:'General',cta:'Cartagena',general:'General',gestion:'Gestión',aero:'Aerolíneas',vac:'Vacacional',ruta:'Ruta Exportadora',hoteles:'Hoteles',reuniones:'Reuniones',cruceros:'Cruceros',baq:'Barranquilla y Riohacha',sost:'Sostenibilidad',sucre:'Multieje Sucre',inno:'Innovación y Sinergias',reu:'Turismo Reuniones'};out.push(sl[esp]||esp);}
   return out;
 }
 
-function renderDetail(p) {
-  const wrap = document.getElementById('detail-wrap');
-  const parts = crumbParts();
-  let html = `<div class="detail-card">
-    <div class="detail-header">
-      <div class="detail-crumb">
-        ${parts.map((t,i) => (i?`<span class="crumb-sep">›</span>`:'')+`<span class="crumb-item">${t}</span>`).join('')}
-      </div>
-      <div class="detail-title">${p.title}</div>
-      ${p.sub ? `<div class="detail-subtitle">${p.sub}</div>` : ''}
-    </div>
-    <div class="detail-body">`;
-
-  p.cats.forEach(cat => {
-    const cc = catClass(cat.n);
-    const pn = pctNum(cat.p);
-    html += `<div class="cat-section">
-      <div class="cat-head ${cc}">
-        <span class="cat-badge ${cc}">${cat.n}</span>
-        <span class="cat-pct">${cat.p}</span>
-        <div class="cat-bar">
-          <div class="cat-bar-fill" style="width:${pn}%"></div>
-        </div>
-      </div>
-      <div class="ind-list">`;
-    cat.inds.forEach(ind => {
-      html += `<div class="ind-row">
-        <span class="ind-pct">${ind.p}</span>
-        <span class="ind-name">${ind.n}</span>
-      </div>`;
-    });
-    html += `</div></div>`;
-  });
-
-  html += `</div>`;
-
-  if(p.ice) html += `<div class="detail-note">+ <strong>ICE</strong> (Inversión Colombiana en el Exterior): eje adicional con peso del 5%, descontado de Exportaciones. Indicador único: Proyectos de Expansión Internacional (100%).</div>`;
-  if(p.note) html += `<div class="detail-note green">${p.note}</div>`;
-
-  html += `</div>`;
-  wrap.innerHTML = html;
+function renderDetail(p){
+  const wrap=document.getElementById('detail-wrap');const parts=crumbParts();
+  let html=`<div class="detail-card"><div class="detail-header"><div class="detail-crumb">${parts.map((t,i)=>(i?'<span class="crumb-sep">›</span>':'')+`<span class="crumb-item">${t}</span>`).join('')}</div><div class="detail-title">${p.title}</div>${p.sub?`<div class="detail-subtitle">${p.sub}</div>`:''}</div><div class="detail-body">`;
+  p.cats.forEach(cat=>{const cc=catClass(cat.n);const pn=parseFloat(cat.p)||0;html+=`<div class="cat-section"><div class="cat-head ${cc}"><span class="cat-badge ${cc}">${cat.n}</span><span class="cat-pct">${cat.p}</span><div class="cat-bar"><div class="cat-bar-fill" style="width:${pn}%"></div></div></div><div class="ind-list">`;cat.inds.forEach(ind=>{html+=`<div class="ind-row"><span class="ind-pct">${ind.p}</span><span class="ind-name">${ind.n}</span></div>`;});html+=`</div></div>`;});
+  html+=`</div>`;
+  if(p.ice) html+=`<div class="detail-note">+ <strong>ICE</strong> (Inversión Colombiana en el Exterior): eje adicional con peso del 5%, descontado de Exportaciones. Indicador único: Proyectos de Expansión Internacional (100%).</div>`;
+  if(p.note) html+=`<div class="detail-note green">${p.note}</div>`;
+  html+=`</div>`;wrap.innerHTML=html;
 }
 
-function resetAll() {
-  Object.keys(S).forEach(k => S[k] = null);
-  render();
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// Init
+function resetAll(){Object.keys(S).forEach(k=>S[k]=null);render();window.scrollTo({top:0,behavior:'smooth'});}
 render();
 </script>
 </body>
